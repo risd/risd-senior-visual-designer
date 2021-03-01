@@ -1,0 +1,136 @@
+section {
+	@include grid-container;
+	@include text-size($medium);
+	padding: 2em;
+	// @include grid-visual;
+	@include respond-above(medium) {
+		padding: 2em 0;
+	};
+}
+
+.description {}
+
+.description__title {
+	@include text-size($xxl);
+	color: rgb(0,255,0);
+	@include respond-above(small) {
+		 @include grid-column(3);
+	};
+	@include respond-above(large) {
+		 @include grid-push(1);
+	};
+}
+
+.description-text-container,
+.gallery-of-work {
+	@extend %antialiased;
+	@include respond-above(small) {
+		 @include grid-column(9);
+	};
+	@include respond-above(large) {
+		 @include grid-column(7);
+	};
+	@include respond-above(huge) {
+		 @include grid-column(6);
+	};
+}
+
+li {
+	margin-bottom: 0.5em;
+}
+
+ol {
+	counter-reset: item;
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: block;
+		margin-bottom: 0.5em;
+		margin-left: 2em;
+
+		&:before {
+			display: block;
+			position: absolute;
+			content: counter(item);
+			width: 1em;
+			height: 1em;
+			margin-left: -3em;
+			margin-right: 1em;
+			margin-top: -0.25em;
+			@extend %sans-serif;
+			font-weight: bold;
+			border: 2px solid black;
+			color: black;
+			padding: 0.5em;
+			font-size: 0.7em;
+			text-align: center;
+			border-radius: 50%;
+		}
+
+		&[data-counter] {
+			&:before {
+				counter-increment: item;
+			}
+		}
+
+		&:hover:before {
+			color: rgb(0,255,0);
+			border-color: rgb(0,255,0);
+		}
+
+		ul {
+			list-style: none;
+
+			li {
+				display: block;
+				margin-bottom: 0.5em;
+				margin-left: 2em;
+
+				&:before {
+					display: block;
+					position: absolute;
+					content: "⌖";
+					width: auto;
+					height: auto;
+					font-size: 1.5em;
+					margin-left: -1.25em;
+					margin-top: -.25em;
+					margin-right: 0;
+					border: none;
+					padding: 0;
+					border-radius: none;
+				}
+
+				&:hover:before {
+					color: rgb(0,255,0);
+				}
+			}
+		}
+	}
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: block;
+		margin-bottom: 0.5em;
+		margin-left: 2em;
+
+		&:before {
+			display: block;
+			position: absolute;
+			content: "⌖";
+			font-size: 1.5em;
+			margin-left: -1.25em;
+			margin-top: -.25em;
+		}
+
+		&:hover:before {
+			color: rgb(0,255,0);
+		}
+	}
+}

@@ -1,0 +1,437 @@
+@charset "UTF-8";
+body {
+  margin: 0px;
+  background: #f8f8f8; }
+
+@font-face {
+  font-family: "Modern Pictograms";
+  font-weight: 100;
+  src: url("fonts/modernpics_2_268e-webfont.eot"), url("fonts/modernpics_2_268e-webfont.ttf"), url("fonts/modernpics_2_268e-webfont.woff"); }
+ol li:before, h1, h2, h3, h4, h5, h6, .apply {
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+
+p, li {
+  font-family: "Mercury Text G1 A", "Mercury Text G1 B", "Georgia", "Times New Roman", "Times", serif; }
+
+.description-text-container,
+.gallery-of-work {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+/* --------------------------------------------------------
+
+Remove the unit of a length
+@param {Number} $number - Number to remove unit from
+@return {Number} - Unitless number
+
+-------------------------------------------------------- */
+/* --------------------------------------------------------
+
+Variable Map Lists for the text-size mixin
+
+A specific text-size in this mixin is defined with a font-size and a leading.
+
+For example,
+  small: (64px, 72px)
+  where small is the media query width defined in the $breakpoints map-list in _responsive.scss,
+  64px is the font-size
+  72px is the line-height (which will be converted to a unitless value for the browser in the mixin)
+
+
+The definition of each font-size/leading pair can be different for each media query width.
+This is an example of a font size with different definitions for each media query width:
+  $medium: (
+    base: (12px, 18px),
+    small: (14px, 20px),
+    medium: (16px, 24px),
+    large: (18px, 28px),
+    huge: (20px, 32px)
+  ) ;
+This is generally an unusual situation because it would involve a pretty complicated typography system.
+
+
+A more common example would be something like this:
+  $xlarge: (
+    base: (52px, 60px),
+    small: (64px, 72px),
+    medium: (64px, 72px),
+    large: (72px, 80px),
+    huge: (72px, 80px)
+  ) ;
+
+This definition includes redundant repitition of values, so it can be defined more simply like this:
+  $xlarge: (
+    base: (52px, 60px),
+    small: (64px, 72px),
+    large: (72px, 80px)
+  ) ;
+
+-------------------------------------------------------- */
+/* --------------------------------------------------------
+Mixin for font-size and line-height definition
+  Usage Example: @include text-size(large);
+
+Font size can take on the following values:
+  small, regular, medium, large, xlarge, xxlarge
+
+If the mixin is called and values are not entered, it will default to regular font-size
+-------------------------------------------------------- */
+section {
+  padding: 2em; }
+  section::after {
+    clear: both;
+    content: "";
+    display: block; }
+  @media screen and (min-width: 1px) {
+    section {
+      font-size: 20px;
+      line-height: calc(24 / 20); } }
+  @media screen and (min-width: 513px) {
+    section {
+      font-size: 20px;
+      line-height: calc(24 / 20); } }
+  @media screen and (min-width: 769px) {
+    section {
+      font-size: 28px;
+      line-height: calc(32 / 28); } }
+  @media screen and (min-width: 769px) {
+    section {
+      padding: 2em 0; } }
+
+.description__title {
+  color: lime; }
+  @media screen and (min-width: 1px) {
+    .description__title {
+      font-size: 48px;
+      line-height: calc(48 / 48); } }
+  @media screen and (min-width: 769px) {
+    .description__title {
+      font-size: 72px;
+      line-height: calc(72 / 72); } }
+  @media screen and (min-width: 1025px) {
+    .description__title {
+      font-size: 96px;
+      line-height: calc(96 / 96); } }
+  @media screen and (min-width: 513px) {
+    .description__title {
+      width: calc(25% - 25px);
+      float: left;
+      margin-left: 20px; } }
+  @media screen and (min-width: 1025px) {
+    .description__title {
+      margin-left: calc(8.33333% - 21.66667px + 40px); } }
+
+@media screen and (min-width: 513px) {
+  .description-text-container,
+  .gallery-of-work {
+    width: calc(75% - 35px);
+    float: left;
+    margin-left: 20px; } }
+@media screen and (min-width: 1025px) {
+  .description-text-container,
+  .gallery-of-work {
+    width: calc(58.33333% - 31.66667px);
+    float: left;
+    margin-left: 20px; } }
+@media screen and (min-width: 1601px) {
+  .description-text-container,
+  .gallery-of-work {
+    width: calc(50% - 30px);
+    float: left;
+    margin-left: 20px; } }
+
+li {
+  margin-bottom: 0.5em; }
+
+ol {
+  counter-reset: item;
+  padding: 0;
+  margin: 0; }
+  ol li {
+    display: block;
+    margin-bottom: 0.5em;
+    margin-left: 2em; }
+    ol li:before {
+      display: block;
+      position: absolute;
+      content: counter(item);
+      width: 1em;
+      height: 1em;
+      margin-left: -3em;
+      margin-right: 1em;
+      margin-top: -0.25em;
+      font-weight: bold;
+      border: 2px solid black;
+      color: black;
+      padding: 0.5em;
+      font-size: 0.7em;
+      text-align: center;
+      border-radius: 50%; }
+    ol li[data-counter]:before {
+      counter-increment: item; }
+    ol li:hover:before {
+      color: lime;
+      border-color: lime; }
+    ol li ul {
+      list-style: none; }
+      ol li ul li {
+        display: block;
+        margin-bottom: 0.5em;
+        margin-left: 2em; }
+        ol li ul li:before {
+          display: block;
+          position: absolute;
+          content: "⌖";
+          width: auto;
+          height: auto;
+          font-size: 1.5em;
+          margin-left: -1.25em;
+          margin-top: -.25em;
+          margin-right: 0;
+          border: none;
+          padding: 0;
+          border-radius: none; }
+        ol li ul li:hover:before {
+          color: lime; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  ul li {
+    display: block;
+    margin-bottom: 0.5em;
+    margin-left: 2em; }
+    ul li:before {
+      display: block;
+      position: absolute;
+      content: "⌖";
+      font-size: 1.5em;
+      margin-left: -1.25em;
+      margin-top: -.25em; }
+    ul li:hover:before {
+      color: lime; }
+
+.intro {
+  width: 100vw;
+  height: 100vh;
+  background: url("img/background/background-header.jpg");
+  background-size: cover;
+  background-position: bottom right; }
+
+h1 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 0;
+  border-bottom: 4px solid lime; }
+  @media screen and (min-width: 1px) {
+    h1 {
+      font-size: 48px;
+      line-height: calc(48 / 48); } }
+  @media screen and (min-width: 769px) {
+    h1 {
+      font-size: 72px;
+      line-height: calc(72 / 72); } }
+  @media screen and (min-width: 1025px) {
+    h1 {
+      font-size: 96px;
+      line-height: calc(96 / 96); } }
+  h1 span {
+    display: block;
+    background: black;
+    color: white;
+    padding: 0.25em 0.4em;
+    margin: 0 auto;
+    width: 5.5em; }
+  h1 .group-01 {
+    text-align: center;
+    right: 0em; }
+  h1 .group-02 {
+    bottom: 1em;
+    text-align: center; }
+
+@-webkit-keyframes flash {
+  from {
+    background: lime;
+    color: black; }
+  to {
+    background: black;
+    color: white; } }
+@-moz-keyframes flash {
+  from {
+    background: lime;
+    color: black; }
+  to {
+    background: black;
+    color: white; } }
+@keyframes flash {
+  from {
+    background: lime;
+    color: black; }
+  to {
+    background: black;
+    color: white; } }
+.gallery-image {
+  position: static;
+  margin-left: 1em; }
+  @media screen and (min-width: 513px) {
+    .gallery-image {
+      position: absolute; }
+      .gallery-image:hover {
+        z-index: 1000; }
+        .gallery-image:hover .controls {
+          display: block; } }
+  .gallery-image img {
+    max-width: 70vw;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform-origin: 0% 100%;
+    -moz-transform-origin: 0% 100%;
+    -ms-transform-origin: 0% 100%;
+    -o-transform-origin: 0% 100%;
+    transform-origin: 0% 100%; }
+    @media screen and (min-width: 513px) {
+      .gallery-image img {
+        max-width: 30vw; }
+        .gallery-image img:hover {
+          cursor: move; } }
+  .gallery-image.selected {
+    width: 100vw;
+    height: 100vh;
+    background: red;
+    position: fixed;
+    left: 0;
+    top: 0; }
+  .gallery-image.big img {
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2); }
+  .gallery-image.big .controls svg polygon {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg); }
+  .gallery-image.bottom-right img {
+    -webkit-transform-origin: 200% 100%;
+    -moz-transform-origin: 200% 100%;
+    -ms-transform-origin: 200% 100%;
+    -o-transform-origin: 200% 100%;
+    transform-origin: 200% 100%; }
+
+.deselected {
+  -webkit-filter: grayscale(1) contrast(0.1) brightness(1.9);
+  filter: grayscale(1) contrast(0.1) brightness(1.9); }
+
+.gallery-of-work {
+  position: relative; }
+  @media screen and (min-width: 513px) {
+    .gallery-of-work {
+      margin-left: calc(25% - 25px + 40px);
+      height: 175vh; } }
+
+.controls {
+  display: none; }
+  @media screen and (min-width: 513px) {
+    .controls .icon {
+      color: lime; }
+      .controls .icon:hover {
+        cursor: pointer; } }
+  .controls svg {
+    max-height: 20px;
+    max-width: 24px; }
+    .controls svg polygon {
+      fill: lime;
+      -webkit-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      -o-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.72, -0.07, 0.29, 1.11);
+      -moz-transition: -moz-transform 0.25s cubic-bezier(0.72, -0.07, 0.29, 1.11);
+      transition: transform 0.25s cubic-bezier(0.72, -0.07, 0.29, 1.11); }
+
+::selection {
+  background: lime;
+  color: black; }
+
+.apply {
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  display: block;
+  margin: 0 auto; }
+  @media screen and (min-width: 1px) {
+    .apply {
+      font-size: 72px;
+      line-height: calc(72 / 72); } }
+  @media screen and (min-width: 769px) {
+    .apply {
+      font-size: 200px;
+      line-height: calc(200 / 200); } }
+  .apply:active {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); }
+  .apply a {
+    display: block;
+    border: 0.125em solid lime;
+    background: white;
+    padding: 0.125em 0.25em 0.25em 0.25em;
+    text-decoration: none;
+    color: lime; }
+    .apply a:hover {
+      border: 0.125em solid black;
+      background: lime;
+      color: black; }
+
+.logo {
+  display: none; }
+  @media screen and (min-width: 513px) {
+    .logo {
+      display: block;
+      position: fixed;
+      z-index: -1;
+      top: -60px;
+      -webkit-animation: spin 100s ease-in-out alternate infinite;
+      -moz-animation: spin 100s ease-in-out alternate infinite;
+      animation: spin 100s ease-in-out alternate infinite; }
+      .logo svg path {
+        fill: lime; }
+      .logo.left {
+        left: -60px; }
+      .logo.right {
+        right: -60px; } }
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: translate(0, 50vh) rotate(90deg); }
+  to {
+    -webkit-transform: translate(0, 50vh) rotate(-90deg); } }
+@-moz-keyframes spin {
+  from {
+    -moz-transform: translate(0, 50vh) rotate(90deg); }
+  to {
+    -moz-transform: translate(0, 50vh) rotate(-90deg); } }
+@keyframes spin {
+  from {
+    -webkit-transform: translate(0, 50vh) rotate(90deg);
+    -moz-transform: translate(0, 50vh) rotate(90deg);
+    -ms-transform: translate(0, 50vh) rotate(90deg);
+    -o-transform: translate(0, 50vh) rotate(90deg);
+    transform: translate(0, 50vh) rotate(90deg); }
+  to {
+    -webkit-transform: translate(0, 50vh) rotate(-90deg);
+    -moz-transform: translate(0, 50vh) rotate(-90deg);
+    -ms-transform: translate(0, 50vh) rotate(-90deg);
+    -o-transform: translate(0, 50vh) rotate(-90deg);
+    transform: translate(0, 50vh) rotate(-90deg); } }
+
+/*# sourceMappingURL=main.css.map */

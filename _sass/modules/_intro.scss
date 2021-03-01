@@ -1,0 +1,57 @@
+.intro{
+	width:100vw;
+	height:100vh;
+	background:url('img/background/background-header.jpg');
+	background-size:cover;
+	background-position: bottom right;
+}
+
+
+h1{
+	@include text-size($xxl);
+	position:relative;
+	width:100vw;
+	height:100vh;
+	margin-top:0;
+	border-bottom:4px solid rgb(0,255,0);
+
+
+	span{
+		display:block;
+		background:rgb(0,0,0);
+		color:white;
+		padding:0.25em 0.4em;
+		margin:0 auto;
+		width:5.5em;
+		// position:absolute;
+		// mix-blend-mode:multiply;
+
+		&:hover{
+			// mix-blend-mode:normal;
+		}
+	}
+
+	.group-01{
+		text-align:center;
+		right:0em;
+	}
+
+	.group-02{
+		bottom:1em;
+		text-align:center;
+	}
+}
+
+
+
+@include keyframes(flash){
+	from{
+		background:rgb(0,255,0);
+		color:black;
+	}
+
+	to{
+		background:black;
+		color:white;
+	}
+};

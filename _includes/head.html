@@ -1,0 +1,99 @@
+ 
+   <!-- 
+ +                    ;#@+;                        
+ +                      #@@@@@@@@@#                     
+ +                     @@@#       '@@                   
+ +                    @@@'          '@:                 
+ +                .+@@@@@`      `@@@@@@@@@@.            
+ +             ,@@@;` @@@#@@:  #@@@@   @'  '@`          
+ +            @@@     @@@   '@@@@+`@@  .@   .@.         
+ +           @@+       @@;  @@@@#  @@   @@   @@         
+ +          @@@        .@@,@@@# #@#@@   @@  ;@@         
+ +          @@@'@@@@,    @@@@'   '@@@   @@, @@`         
+ +         .@@@;   `@@@ ,@@@@@@@@@@#@'  @@+             
+ +         `@@@       @@@@@         .@@ @@'             
+ +        .@@@@       @@@@,           @@@@`   ,@#;@@    
+ +        @@ @@@    ,@@@.'@@,         @@@@`  '@   :@+   
+ +       @@#  #@@@@@@@,    +@@+     ;@@@@+@@:@@   @@    
+ +       @@                  `@@@@@@@@@#   ,@@@@@@@     
+ +      '@@                       .;.       @@          
+ +      @@@                                '@@          
+ +    ,@@@@@@@@,        .;;      ,@@@     ,@@@+++;.     
+ +  +@@@@@@@@@@@@    `@@@@:    ,@@@@@@  @@@@@@@@@@@@@.  
+ + @@  `@@`  ;@@@'   @@@@@    '@.  @@ ;@;  @@'   '@@@@' 
+ +'@@  ;@@    ,@@@     @@@    @@     ,@;   @@.     @@@@ 
+ +@@@  @@@     @@'     @@@   #@@     @@#  .@@       @@@#
+ +,`   @@@     @@      @@@   @@@     @@.  ;@@       .@@@
+ +     @@@    ,@#      @@;   @@@#    :    @@@        @@@
+ +     @@+    @@      .@@`   `@@@'        @@@        @@@
+ +     @@:  ;@#       ;@@     @@@@,       @@@        @@@
+ +    .@@@@@@@        @@@      @@@@.      @@@        @@@
+ +    +@@+;@@@#       @@@       @@@@      @@+        @@:
+ +    @@@  .@@@       @@@        @@@@     @@:        @@ 
+ +    @@@   @@@@      @@@         @@@    .@@.       #@# 
+ +    @@@    @@@`     @@;         +@@    '@@        @@  
+ +    @@#    #@@@    .@@`          @@    @@@       #@   
+ +   `@@;     @@@;   +@@     +     @`    @@@      +@`   
+ +   '@@` `   ,@@@   @@@ `'  @@, `@+     @@@+;;;@@@     
+ +   @@@@@     @@@#  @@@@@. @@@@@@,     `@@@@@@@@+      
+ +  :@@@@       @@@ '@@@+   '@@@;       +@@@@+:         
+ +              @@@@                                    
+ +               @@@,.,;;;;.                            
+ +              ;@@@@+:.  .:#@@@.                       
+ +           `@@@+@@@#         ;@@#      ,;:.           
+ +          @@@+   @@@.          +@@';@@@@@@@@@`        
+ +         #@@,    ,@@@,@@@@@@,   ;@@@      @@@@        
+ +         @@@      '@@@`    ;@@+@@;@@#      @@@        
+ +        .@@@      @@@@@     @@@   @@@     ,@@+        
+ +         @@@     #@@ @@@ `@@:@@'  ;@@@    @@@         
+ +         @@@     @@@  `@@@`  @@@   @@@  #@@,          
+ +          @@@`   @@@#@@+.@@@@@@#...@@@@@@.            
+ +           .@@@@@@@@'       @@@@@@@@@'                
+ +                 @@@     @@@@@    @@@                 
+ +                 :@@@            ,@@.                 
+ +                  +@@@          :@@`                  
+ +                   `@@@@`     ,@@+         
+ +  -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQKW73R');</script>
+<!-- End Google Tag Manager -->
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+  <meta property="og:title" content="{{site.tite}}"/>
+  <meta property="og:image" content="https://risd.github.io/creative-director/assets/img/social/facebook-og.jpg"/>
+  <meta property="og:url" content="{{site.url}}"/>
+  <meta property="og:site_name" content="{{site.title}}"/>
+  <meta property="og:description" content="{{site.description}}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@risd">
+  <meta name="twitter:creator" content="@risd">
+  <meta name="twitter:title" content="{{site.title}}">
+  <meta name="twitter:description" content="{{site.description}}.">
+  <meta name="twitter:image" content="https://risd.github.io/creative-director/assets/img/social/twitter-card.jpg">
+
+
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+
+  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/641934/6266772/css/fonts.css" />
+  <link rel="icon" href="assets/img/favicon.gif" type="image/gif" >
+  {% if jekyll.environment == 'production' and site.google_analytics %}
+  {% include google-analytics.html %}
+  {% endif %}
+
+  
+</head>

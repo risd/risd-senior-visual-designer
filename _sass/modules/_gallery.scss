@@ -1,0 +1,106 @@
+
+.gallery-image {
+	// background:rgba(0,0,0,0.2);
+	position:static;
+	margin-left:1em;
+	@include respond-above(small){
+		position:absolute;
+
+		&:hover{
+			z-index:1000;
+			.controls{
+				display:block;
+			}
+		}
+	};
+
+	img{
+		max-width:70vw;
+		@include transition(all 0.2s ease-in-out);
+		@include transform-origin(0% 100%);
+		@include respond-above(small){
+			max-width:30vw;
+
+			&:hover{
+				cursor:move;	
+			}	
+		};	
+	}
+
+	&.selected{
+		width:100vw;
+		height:100vh;
+		background:red;
+		position:fixed;
+		left:0;
+		top:0;
+	}
+
+	
+
+	&.big{
+
+		img{
+			@include transform(scale(2));
+		}
+
+		.controls{
+			svg{
+				polygon{
+					@include transform(rotate(180deg));
+				}
+			}
+		}
+	}
+	&.bottom-right{
+		img{
+			@include transform-origin(200% 100%);
+		}
+	}
+}
+
+
+.deselected{
+	@include filter(grayscale(1.0) contrast(0.1) brightness(1.9));
+
+}
+
+
+
+.gallery-image{
+	
+}
+
+.gallery-of-work{
+	position:relative;
+	// background:rgb(240,240,240);
+
+	@include respond-above(small){
+		@include grid-push(3);
+		height:175vh;
+	};
+}
+
+.controls{
+	display:none;
+
+	@include respond-above(small){
+		.icon{
+			color:rgb(0,255,0);
+			&:hover{
+				cursor:pointer;
+			}
+		}	
+	};
+	
+	svg{
+		max-height:20px;
+		max-width:24px;
+		polygon{
+			fill:rgb(0,255,0);
+			@include transform-origin(50% 50%);
+			@include transition(transform 0.25s cubic-bezier(0.72, -0.07, 0.29, 1.11));
+		}
+		
+	}
+}
