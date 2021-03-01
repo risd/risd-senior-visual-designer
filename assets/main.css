@@ -185,9 +185,9 @@ ol {
           content: "⌖";
           width: auto;
           height: auto;
-          font-size: 1.5em;
+          font-size: 1.25em;
           margin-left: -1.25em;
-          margin-top: -.25em;
+          margin-top: -.2em;
           margin-right: 0;
           border: none;
           padding: 0;
@@ -207,9 +207,9 @@ ul {
       display: block;
       position: absolute;
       content: "⌖";
-      font-size: 1.5em;
+      font-size: 1.25em;
       margin-left: -1.25em;
-      margin-top: -.25em; }
+      margin-top: -.2em; }
     ul li:hover:before {
       color: lime; }
 
