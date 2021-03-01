@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: RISD Seeks Creative Director
+title: RISD Seeks Senior Visual Designer
 email: kstroud@risd.edu
 description: > # this means to ignore newlines until "baseurl:"
- RISD is seeking a Creative Director to develop and champion the college’s visual brand and lead a cross-disciplinary team in producing outstanding creative work.
+ RISD seeks a highly-skilled Senior Visual Designer to join its team of writers, designers, marketers, and software developers as they articulate, steward, and amplify the RISD brand.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: risd

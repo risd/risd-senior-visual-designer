@@ -17,4 +17,4 @@ watch-styles:
 
 # pushes built site
 deploy:
-	rm-wh push-static creative-director.risd.systems --staticFolder=_site
+	rm-wh push-static senior-visual-designer.risd.systems --staticFolder=_site
