@@ -22,5 +22,5 @@ watch-styles:
 	bundle exec sass --watch assets/main.scss
 
 # pushes built site
-deploy:
+deploy: build
 	rm-wh push-static senior-visual-designer.risd.systems --staticFolder=_site
