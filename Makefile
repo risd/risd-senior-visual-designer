@@ -1,3 +1,9 @@
+.PHONY: dev build server watch-server watch-styles deploy
+
+# runs profile commands
+dev:
+	foreman start
+
 # builds site into _site
 build:
 	bundle exec jekyll build
