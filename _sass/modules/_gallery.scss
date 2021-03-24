@@ -6,8 +6,9 @@
 	@include respond-above(small){
 		position:absolute;
 
-		&:hover{
-			z-index:1000;
+		&:hover,
+		&.big {
+			z-index: 2000;
 			.controls{
 				display:block;
 			}
@@ -87,7 +88,7 @@
 	@include respond-above(small){
 		.icon{
 			color:rgb(0,255,0);
-			&:hover{
+			&:hover {
 				cursor:pointer;
 			}
 		}	

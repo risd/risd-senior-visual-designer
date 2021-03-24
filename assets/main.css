@@ -279,9 +279,9 @@ h1 {
   @media screen and (min-width: 513px) {
     .gallery-image {
       position: absolute; }
-      .gallery-image:hover {
-        z-index: 1000; }
-        .gallery-image:hover .controls {
+      .gallery-image:hover, .gallery-image.big {
+        z-index: 2000; }
+        .gallery-image:hover .controls, .gallery-image.big .controls {
           display: block; } }
   .gallery-image img {
     max-width: 70vw;

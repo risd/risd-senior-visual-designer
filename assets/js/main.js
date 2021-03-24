@@ -1,134 +1,108 @@
-// $('.gallery-image').draggable();
-$('.gallery-video').draggable();
-
-var images = $('.gallery-image');
-
-var pileStatus = false;
-
-'font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", "Helvetica", "Arial", sans-serif;'
-
 console.log('%c Apply Today!', 'font-family:Gotham, "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-feature-settings: "salt" 3; font-weight:bold; marign-bottom:1em; color: rgb(0,255,0); font-size:120px; letter-spacing:-10px;');
 
-// console.log("hey");
-if($(window).width() > 512){
-	// pileStatus = false;
-	makeAPile();
-	images.draggable();
+$( '.gallery-video' ).draggable()
 
+var $images = $( '.gallery-image' )
 
+var pileMade = false;
+var anImageIsBig = false
+
+if( $( window ).width() > 512) {
+	makeAPile()
 }
 
-if ($(window).width() < 512) {
-	pileStatus = false;
-
-}
-
-$(window).resize(function(){
-
-	if($(window).width() > 512 && (pileStatus === false)){
-		makeAPile();
-		images.draggable();
-
+$( window ).resize( function () {
+	if( ( $( window ).width() > 512 ) && ( pileMade === false ) ) {
+		makeAPile()
 	}
-	
-});
+
+	updateGalleryValues()
+} )
+
+$images.draggable()
+$images.hover( hoveringImage, notHoveringImage )
+
+function hoveringImage () {
+	if ( anImageIsBig === false ) {
+		var $image = $( this )
+		var positionZ = $image.data( 'z-indez' )
+		$image.css( 'z-index', positionZ + 1000 )	
+	}
+}
+
+function notHoveringImage () {
+	if ( anImageIsBig === false ) {
+		var $image = $( this )
+		var positionZ = $image.data( 'z-indez' )
+		$image.css( 'z-index', positionZ )	
+	}
+}
 
 function makeAPile(){
-	$('.gallery-image').each(function(){
+	$images.each( function () {
+		var $image = $( this )
 
-		var positionLeft = randomX(-15,60);
-	    var positionTop = randomY(-20,75);
-	    var positionZ = randomX(1,10);
+		var positionLeft = randomBetween( -15, 60 )
+	  var positionTop = randomBetween( -20, 75 )
+	  var positionZ = randomBetween( 1, 10 )
 
+    $image.css( {
+    	left: positionLeft + '%',
+    	top: positionTop + '%',
+    	zIndex: positionZ,
+    } )
 
-	    // $(this).css("left", positionLeft + "%");
-	    // $(this).css("top", positionTop + "%");
-	    // $(this).css("z-index", positionZ);
-	    $(this).css({
-	    	left: positionLeft + '%',
-	    	top: positionTop + '%',
-	    	zIndex: positionZ
-	    });
-	    images.hover(hovering, notHovering);
+    $image.data( 'z-indez', positionZ )
+	} )
 
-	 	pileStatus = true;
+ 	pileMade = true
 
-	    function hovering(){
-	    	positionZ = positionZ + 1000;
-			$(this).css("z-index", positionZ);
-		}
-
-		function notHovering(){
-			positionZ = positionZ - 1;
-			$(this).css("z-index", positionZ);
-		}
-	 	return pileStatus;
-	    
-	});
+ 	return pileMade
 }
 
-function randomDistribution(){
-
+function randomBetween ( min, max ) {
+	return Math.floor( Math.random() * ( max - min) ) + min;		
 }
 
+var $galleryContainer = $( '.gallery-of-work' )
+var galleryContainerWidth = $galleryContainer[ 0 ].clientWidth
+var galleryCenter = galleryContainerWidth / 2
 
+var $galleryImageBigToggleIcons = $( '.gallery-image .icon' )
 
-// generate random X number
-function randomX(min, max){
-	return Math.floor(Math.random() * (max - min)) + min;		
-}
+$galleryImageBigToggleIcons.click( function () {
+	var $icon = $( this )
 
-function randomY(min, max){
-	return Math.floor(Math.random() * (max - min)) + min;		
-}
+	anImageIsBig = ! anImageIsBig
 
-
-
-$('.icon').click(function(){
-	$('.gallery-image').toggleClass('deselected');
-	$(this).closest("figure").toggleClass("big").removeClass('deselected');
-
-	var leftCoordinate = $(this).closest("figure").css("left");
-	var galleryContainerWidth = galleryContainer[0].clientWidth;
-	var leftCoordinateClean = parseInt(leftCoordinate,10);
-
-	// console.log(leftCoordinateClean);
-	// console.log("gallery center " + galleryCenter + " left coordinate " + leftCoordinateClean);
-
-	if(leftCoordinateClean >= galleryCenter){
-		// console.log('woo hoo!');
-		$(this).closest("figure").toggleClass("bottom-right");
-	} else {
-		$(this).closest("figure").toggleClass("bottom-left");
-
+	if ( anImageIsBig === true ) {
+		$galleryImageBigToggleIcons.css( 'pointer-events', 'none' )
+		$icon.css( 'pointer-events', 'all' )
 	}
-});
-
-
-
-var galleryContainer = $('.gallery-of-work');
-var galleryContainerWidth = galleryContainer[0].clientWidth;
-var galleryCenter = galleryContainerWidth / 2;
-
-function grow(){
-	var galleryContainerWidth = galleryContainer[0].clientWidth;
-	var galleryCenter = galleryContainerWidth / 2;
-
-	// console.log(galleryContainerWidth);
-	// console.log(galleryCenter);
-}
-
-$body = $("body");
-
-$(document).on({
-    ajaxStart: function() { $body.addClass("loading");    },
-     ajaxStop: function() { $body.removeClass("loading"); }    
-});
-
-
-// console.log(galleryContainerWidth);
-
-$(window).resize(function(){
-	grow();
+	else {
+		$galleryImageBigToggleIcons.css( 'pointer-events', 'all' )
+	}
 	
-});
+	$images.toggleClass( 'deselected' )
+
+	var $image = $icon.closest( 'figure' )
+	$image
+		.toggleClass( 'big' )
+		.removeClass( 'deselected' )
+
+	var leftCoordinate = $image.css( 'left' )
+
+	galleryContainerWidth = $galleryContainer[ 0 ].clientWidth
+	var leftCoordinateClean = parseInt( leftCoordinate, 10 )
+
+	if( leftCoordinateClean >= galleryCenter ){
+		$image.toggleClass( 'bottom-right' )
+	} else {
+		$image.toggleClass( 'bottom-left' )
+	}
+} )
+
+function updateGalleryValues () {
+	galleryContainerWidth = $galleryContainer[ 0 ].clientWidth
+	galleryCenter = galleryContainerWidth / 2
+}
