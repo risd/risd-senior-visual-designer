@@ -1,6 +1,6 @@
 .PHONY: dev build server watch-server watch-styles deploy
 
-# runs profile commands
+# runs procfile commands
 dev:
 	foreman start
 
